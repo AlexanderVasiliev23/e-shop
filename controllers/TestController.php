@@ -11,12 +11,40 @@ class TestController extends Controller
 
     public function actionIndex()
     {
-        $categories = Category::find()->with('products')->all();
+        $categories = Category::find()
+            ->indexBy('id')
+            ->asArray()
+            ->all();
+
+        $tree = $this->getTree($categories);
 
         $data = [
-            'categories' => $categories
+            'categories'    => $categories,
+            'tree'          => $tree
         ];
 
         return $this->render('index', $data);
+    }
+
+    public function getTree($categories)
+    {
+        $tree = [];
+
+        foreach ($categories as $id => &$category)
+        {
+            if ( ! $category['parent_id'] )
+            {
+                $tree[$id] = &$category;
+            }
+            else
+            {
+                $categories[$category['parent_id']]['children'][$category['id']] = &$category;
+            }
+            
+        }
+
+
+
+        return $tree;
     }
 }

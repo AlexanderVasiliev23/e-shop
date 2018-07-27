@@ -50,7 +50,8 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                '<action:(about|contact|login)>' => 'site/<action>'
+                '<action:(about|contact|login)>' => 'site/<action>',
+                'category/<id:\d+>' => 'category/view'
             ],
         ],
     ],
