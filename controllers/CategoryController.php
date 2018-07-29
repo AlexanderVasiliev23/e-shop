@@ -19,6 +19,8 @@ class CategoryController extends AppController
             'hitProducts' => $hitProducts
         ];
 
+        $this->setMeta('E-shopper');
+
         return $this->render('index', $data);
     }
 
@@ -30,9 +32,14 @@ class CategoryController extends AppController
             ->where(['category_id' => $id])
             ->all();
 
+        $category = Category::findOne($id);
+
         $data = [
-            'products' => $products
+            'products'  => $products,
+            'category'  => $category
         ];
+
+        $this->setMeta('E-shopper | ' . $category->name, $category->keywords, $category->description);
 
         return $this->render('view', $data);
     }

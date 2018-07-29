@@ -54,7 +54,7 @@
 
                 <div class="col-sm-9 padding-right">
                     <div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">Features Items</h2>
+                        <h2 class="title text-center"><?= $category->name ?></h2>
 
                         <?php if(isset($products)) : ?>
                             <?php $i = 0; foreach ($products as $product) : ?>
@@ -63,7 +63,7 @@
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <?= Html::img("@web/images/products/{$product->img}", ['alt' => $product->name]) ?>
-    <!--                                            <img src="/images/shop/product12.jpg" alt="" />-->
+
                                                 <h2>$<?= $product->price ?></h2>
                                                 <p><?= $product->name ?></p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

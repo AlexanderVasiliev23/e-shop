@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use app\assets\AppAsset;
 use app\assets\LtAppAsset;
@@ -60,7 +61,8 @@ LtAppAsset::register($this);
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="index.html"><img src="/images/home/logo.png" alt="" /></a>
+                        <a href="<?= Url::home() ?>"><?= Html::img('@web/images/home/logo.png', ['alt' => 'Logo']) ?></a>
+<!--                        <img src="/images/home/logo.png" alt="" />-->
                     </div>
                     <div class="btn-group pull-right">
                         <div class="btn-group">
