@@ -58,7 +58,7 @@ use app\components\MenuWidget;
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center"><?= $category->name ?></h2>
 
-                    <?php if(isset($products)) : ?>
+                    <?php if( ! empty($products) ) : ?>
                         <?php $i = 0; foreach ($products as $product) : ?>
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
