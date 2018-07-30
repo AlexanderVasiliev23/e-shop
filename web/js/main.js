@@ -32,3 +32,23 @@ $(document).ready(function(){
 		speed: 300
 	});
 });
+
+/**
+ * Работа с корзиной
+ */
+$('.add-to-cart').on('click', function (e) {
+	e.preventDefault();
+	const id = $(this).data('id');
+
+	$.ajax({
+		url: '/cart/add/',
+		data: {id:id},
+		method: 'GET',
+		success: function (data) {
+            console.log(data);
+        },
+		error: function (error) {
+            console.log(error);
+        }
+	})
+});
